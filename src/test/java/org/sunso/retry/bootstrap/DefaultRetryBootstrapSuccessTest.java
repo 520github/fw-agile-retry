@@ -21,6 +21,7 @@ public class DefaultRetryBootstrapSuccessTest extends BaseTest {
                     String result = context.getRetryCount() + "-success";
                     return result;
                 });
+        Assert.assertEquals("0-success", response);
         this.print("response", response);
     }
 
@@ -31,6 +32,7 @@ public class DefaultRetryBootstrapSuccessTest extends BaseTest {
                     String result = context.getRetryCount() + "-success";
                     return result;
                 });
+        Assert.assertEquals("0-success", response);
         this.print("response", response);
     }
 

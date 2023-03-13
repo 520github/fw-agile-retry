@@ -22,7 +22,7 @@
 ###### 例子--默认配置-不做失败兜底处理
 ~~~
 String response = DefaultRetryBootstrap.create()
-                    .retry(context -> {
+                    .retry(context -> {  --执行业务
                         String result = context.getRetryCount() + "-success";
                         return result;
                     });
@@ -31,11 +31,11 @@ String response = DefaultRetryBootstrap.create()
 ###### 例子--默认配置-带失败兜底处理
 ~~~
 String response = DefaultRetryBootstrap.create()
-                .failReturnCallback(context -> {
+                .failReturnCallback(context -> { --重试之后仍然失败返回兜底结果
                     String failReturn = context.getRetryCount() + "-fail";
                     return failReturn;
                 })
-                .retry(context -> {
+                .retry(context -> { --执行业务
                     String result = context.getRetryCount() + "-success";
                     return result;
                 });
@@ -48,9 +48,9 @@ String response = DefaultRetryBootstrap.create()
                 .retryPolicy(new FixedNumRetryPolicy(3)) --重试3次
                 .failReturnCallback(context -> {
                     String failReturn = context.getRetryCount() + "-fail";
-                    return failReturn;  --重试之后仍然失败返回结果
+                    return failReturn;  --重试之后仍然失败返回兜底结果
                 })
-                .retry(context -> {
+                .retry(context -> { --执行业务
                     String result = context.getRetryCount() + "-success";
                     return result;
                 });
